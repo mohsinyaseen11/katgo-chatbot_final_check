@@ -1,0 +1,64 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+    </head>
+    <body>
+        <div id="widget">
+        <div id="header">KatGo Assistant</div>
+        <div id="chat_box"></div>
+        <div id="input_row">
+        <input type="text" id="message_id" placeholder="Type a Message...">
+        <button id="btn_id">➤</button>
+        </div>
+        </div>
+        
+
+        <script>
+          function message_show(){
+                var message=document.getElementById("message_id").value 
+                document.getElementById("chat_box").innerHTML+="<br>"+"<div class='user_message'>"+message+"</div>"
+                document.getElementById("message_id").value=""
+
+                document.getElementById("chat_box").innerHTML+="<br>"+"<div id='typing'>typing...</div>"
+
+
+
+
+                
+
+            fetch("/json",{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({message:message})
+            })
+            .then(function(response){
+                return response.json()
+            })
+
+            .then(function(data){
+                
+                document.getElementById("typing").outerHTML="<br>"+"<div class='bot_reply'>"+data.reply+"</div>"
+            
+
+            })
+    
+
+
+            }
+
+
+            document.getElementById("btn_id").addEventListener("click",function(){
+                    message_show()
+                })
+            document.getElementById("message_id").addEventListener("keypress",function(e){
+                if(e.key==="Enter")
+                message_show()
+            })
+            
+
+
+        
+
+        </script>
+    </body>
+</html>
