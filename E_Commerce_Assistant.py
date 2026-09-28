@@ -140,7 +140,7 @@ def chat_json():
     final_prompt=f"context:{prompt} history:{session['history']} query:{message}"
     try:
         response=client.models.generate_content(
-            model="gemini-3.5-flash-lite",
+            model="gemini-2.5-flash",
             config={
                 "system_instruction":system_prompt
                 },
