@@ -17,9 +17,12 @@
           function message_show(){
                 var message=document.getElementById("message_id").value 
                 document.getElementById("chat_box").innerHTML+="<br>"+"<div class='user_message'>"+message+"</div>"
+                chat_box.scrollTop = chat_box.scrollHeight
                 document.getElementById("message_id").value=""
 
                 document.getElementById("chat_box").innerHTML+="<br>"+"<div id='typing'>typing...</div>"
+                chat_box.scrollTop = chat_box.scrollHeight
+                
 
 
 
@@ -38,6 +41,7 @@
             .then(function(data){
                 
                 document.getElementById("typing").outerHTML="<br>"+"<div class='bot_reply'>"+data.reply+"</div>"
+                chat_box.scrollTop = chat_box.scrollHeight
             
 
             })
