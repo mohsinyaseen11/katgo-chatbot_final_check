@@ -18,7 +18,7 @@ CORS(app, origins=["https://katgo.store"],supports_credentials=True)
 
 
 #                                 Document Loaders
-loader=PyPDFLoader("katgo.pdf")
+loader=PyPDFLoader("Zahra_Stores_Business_Data.pdf")
 document=loader.load()
 
 
@@ -68,12 +68,12 @@ app.secret_key=os.getenv("Secret_Key")
 
 
 system_prompt = """
-Tum Katgo.store ke liye ek helpful customer support assistant ho.
+Tum ZahraStores.pk ke liye ek helpful customer support assistant ho.
 Sirf diye gaye document ki information ke base par jawab do.
 
 Rules:
 - Sirf diye gaye context se jawab do, khud se price ya policy mat banao
-- Agar jawab na mile to bolo: "Ye information available nahi hai, hamare support team se WhatsApp par contact karein: 0300-1234567"
+- Agar jawab na mile to bolo: "Ye information available nahi hai, hamare support team se WhatsApp par contact karein: +92 312-2255552"
 - Friendly aur professional tone rakho
 - Roman Urdu mein jawab do jab tak user English na likhe
 - Agar customer order place karna chahe, bolo "Aap hamari website se order kar sakte hain ya WhatsApp par bata sakte hain"
