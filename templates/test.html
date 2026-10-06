@@ -1,5 +1,6 @@
 <html>
     <head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
     </head>
     <body>
@@ -40,7 +41,8 @@
 
             .then(function(data){
                 
-                document.getElementById("typing").outerHTML="<br>"+"<div class='bot_reply'>"+data.reply+"</div>"
+               // document.getElementById("typing").outerHTML="<br>"+"<div class='bot_reply'>"+data.reply+"</div>"
+                document.getElementById("typing").outerHTML="<br>"+"<div class='bot_reply'>"+marked.parse(data.reply)+"</div>"
                 chat_box.scrollTop = chat_box.scrollHeight
             
 
